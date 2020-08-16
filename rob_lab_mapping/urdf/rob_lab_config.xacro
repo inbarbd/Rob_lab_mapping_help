@@ -1,0 +1,247 @@
+<?xml version="1.0" ?>
+<robot name="lab_config" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:include filename="$(find rob_lab_mapping)/urdf/rob_lab_items_mesurments.xacro" />
+		
+  
+      <link name="world"/>
+
+      <link name="wall_1">
+      <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <!-- size = w, h, l -->
+      <box size="${first_wall_w} ${first_wall_l} ${first_wall_h}" />
+      </geometry>
+      <material name="white"/>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${first_wall_w} ${first_wall_l} ${first_wall_h}" />
+      </geometry>
+      </collision>
+      </link>
+
+         <link name="wall_2">
+      <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <!-- size = w, h, l -->
+      <box size="${second_wall_w} ${second_wall_l} ${second_wall_h}" />
+      </geometry>
+      <material name="white"/>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${second_wall_w} ${second_wall_l} ${second_wall_h}" />
+      </geometry>
+      </collision>
+      </link>
+
+      <link name="table_1">
+      <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <!-- size = w, l, h -->
+      <box size="${cmputer_table_1_w} ${cmputer_table_1_l} ${cmputer_table_1_h}" />
+      </geometry>
+      <material name="black"/>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="${cmputer_table_1_w} ${cmputer_table_1_l} ${cmputer_table_1_h}" />
+      </geometry>
+      </collision>
+      </link>
+
+
+    <link name="table_2">
+      <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <!-- size = w, l, h -->
+      <box size="${cmputer_table_2_w} ${cmputer_table_2_l} ${cmputer_table_2_h}" />
+      </geometry>
+      <material name="white"/>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${cmputer_table_2_w} ${cmputer_table_2_l} ${cmputer_table_2_h}" />
+      </geometry>
+      </collision>
+      </link>
+
+      <link name="comuter_1">
+      <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <!-- size = w, l, h -->
+      <box size="${cmputer1_w} ${cmputer1_l} ${cmputer1_h}" />
+      </geometry>
+      <material name="white"/>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${cmputer1_w} ${cmputer1_l} ${cmputer1_h}" />
+      </geometry>
+      </collision>
+      </link>
+
+
+      <link name="comuter_2">
+      <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <!-- size = w, l, h -->
+      <box size="${cmputer2_w} ${cmputer2_l} ${cmputer2_h}" />
+      </geometry>
+      <material name="white"/>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+      <origin rpy="0 0 ${3.14/6}" xyz="0 0 0"/>
+      <geometry>
+      <box size="${cmputer2_w} ${cmputer2_l} ${cmputer2_h}" />
+      </geometry>
+      </collision>
+      </link>
+
+    
+
+       
+      <!-- Joint List Start -->
+      <joint name="world_to_table" type="fixed">
+      <parent link="world"/>
+      <child link="wall_1"/>
+      <origin
+      xyz="-1 0  ${first_wall_h/2}"
+      rpy="0 0 0" />
+      </joint> 
+
+      
+
+        <joint name="wall_connection" type="fixed">
+      <parent link="wall_1"/>
+      <child link="wall_2"/>
+      <origin
+      xyz="${second_wall_l/2 + first_wall_w/2} ${first_wall_l/2 + second_wall_w/2} 0"
+      rpy="0 0 ${3.14/2}" />
+      </joint> >
+
+    <joint name="table_1_wall_2" type="fixed">
+      <parent link="wall_2"/>
+      <child link="table_1"/>
+      <origin
+      xyz=" ${-cmputer_table_1_l/2}  ${-second_wall_l/2 - cmputer_table_1_w/2} ${-second_wall_h/2 + cmputer_table_1_h/2}"
+      rpy="0 0 ${3.14/2}"/>
+      </joint> 
+
+      <joint name="table_2_wall_1" type="fixed">
+      <parent link="wall_1"/>
+      <child link="table_2"/>
+      <origin
+      xyz=" ${cmputer_table_2_l/2 + first_wall_w/2} ${-first_wall_l/2 - cmputer_table_2_w/2 } ${-first_wall_h/2 + cmputer_table_2_h/2}"
+      rpy="0 0  ${3.14/2}"/>
+      </joint> 
+
+      <joint name="comutetr_on_tabl_1" type="fixed">
+      <parent link="table_1"/>
+      <child link="comuter_1"/>
+      <origin
+      xyz=" 0 ${-cmputer_table_1_l/4} ${cmputer_table_1_h/2 + cmputer1_h}"
+      rpy="0 0  ${-3.14/8}"/>
+      </joint> 
+
+
+      <joint name="comuter_2to_2" type="fixed">
+      <parent link="table_2"/>
+      <child link="comuter_2"/>
+      <origin
+      xyz=" ${cmputer_table_2_w/2 - cmputer2_w/2} ${cmputer_table_2_l/5}  ${cmputer_table_2_h/2 + cmputer2_h} "
+      rpy="0 0  0"/>
+      </joint> 
+   
+    
+
+
+    <!-- Colos list  -->
+     <gazebo reference="wall_1">
+        <material>Gazebo/white</material>
+    </gazebo>
+     <gazebo reference="wall_2">
+        <material>Gazebo/white</material>
+    </gazebo>
+
+         <gazebo reference="table_1">
+        <material>Gazebo/Wood</material>
+    </gazebo>
+     <gazebo reference="table_2">
+        <material>Gazebo/Wood</material>
+    </gazebo>
+
+     <gazebo reference="comuter_1">
+        <material>Gazebo/Black</material>
+    </gazebo>
+ <gazebo reference="comuter_2">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+
+    <gazebo>
+        <static>true</static>
+    </gazebo>
+  
+
+</robot>
+

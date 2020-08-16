@@ -1,0 +1,20 @@
+<launch>
+   <!-- Camera Control Launch -->
+
+        <rosparam file="$(find rob_lab_mapping)/config/camera_control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+        <node name="controller_spawner" pkg="controller_manager" type="spawner"
+            respawn="false" output="screen" ns="/lab_config"
+            args="
+                  camera_position_controller
+                  joint_state_controller
+                   --timeout 60">
+        </node>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" ns = "/lab_config"
+		respawn="false" output="screen">
+  </node>
+
+</launch>

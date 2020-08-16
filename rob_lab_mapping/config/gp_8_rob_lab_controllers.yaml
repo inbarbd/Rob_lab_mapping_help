@@ -1,0 +1,28 @@
+# Publish all joint states -----------------------------------
+/lab_config/joint_state_controller:
+   type: joint_state_controller/JointStateController
+   publish_rate: 50
+
+  # Position Controllers ---------------------------------------
+/lab_config/camera_position_controller:
+   type: effort_controllers/JointPositionController
+   joint: rail_to_camera
+   pid: {p: 100.0, i: 0.01, d: 10.0}
+
+# Publish all joint states -----------------------------------
+/motoman_gp8/joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+
+# Trajectory Controllers
+/motoman_gp8/gp8_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+      - joint_1_s   
+      - joint_2_l
+      - joint_3_u
+      - joint_4_r
+      - joint_5_b
+      - joint_6_t
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<robot name="motoman_gp8_rob_lab" xmlns:xacro="http://ros.org/wiki/xacro">
+	
+    
+    <xacro:include filename="$(find gp8_simulation)/urdf/gp8_macro_gazebo.xacro" />
+	<xacro:motoman_gp8 prefix=""/>
+
+	<link name="world" />
+    <joint name="world_to_gp8" type="fixed">
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <parent link="world"/>
+        <child link="base"/>
+    </joint>
+    
+    <xacro:include filename="$(find rob_lab_mapping)/urdf/lab_walls.xacro" />
+    <xacro:include filename="$(find rob_lab_mapping)/urdf/rob_lab_items_mesurments.xacro" />
+    <joint name="world_to_table" type="fixed">
+      <parent link="world"/>
+      <child link="wall_1"/>
+      <origin
+      xyz="-1 0  ${first_wall_h/2}"
+      rpy="0 0 0" />
+      </joint> 
+
+
+	    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+          <robotNamespace>/motoman_gp8_rob_lab</robotNamespace>
+          <!-- <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType> -->
+        </plugin>
+      </gazebo>
+
+</robot>

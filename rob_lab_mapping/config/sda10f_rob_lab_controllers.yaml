@@ -1,0 +1,37 @@
+# Publish all joint states -----------------------------------
+/lab_config/joint_state_controller:
+   type: joint_state_controller/JointStateController
+   publish_rate: 50
+
+  # Position Controllers ---------------------------------------
+/lab_config/camera_position_controller:
+   type: effort_controllers/JointPositionController
+   joint: rail_to_camera
+   pid: {p: 100.0, i: 0.01, d: 10.0}
+
+/sda10f/larm_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+      - arm_left_joint_1_s   
+      - arm_left_joint_2_l
+      - arm_left_joint_3_e
+      - arm_left_joint_4_u
+      - arm_left_joint_5_r
+      - arm_left_joint_6_b
+      - arm_left_joint_7_t
+
+/sda10f/rarm_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+      - arm_right_joint_1_s
+      - arm_right_joint_2_l
+      - arm_right_joint_3_e
+      - arm_right_joint_4_u
+      - arm_right_joint_5_r
+      - arm_right_joint_6_b
+      - arm_right_joint_7_t 
+
+/sda10f/torso_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+      - torso_joint_b1

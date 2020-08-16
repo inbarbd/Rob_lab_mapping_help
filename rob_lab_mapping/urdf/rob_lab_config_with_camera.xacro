@@ -1,0 +1,368 @@
+<?xml version="1.0" ?>
+<robot name="lab_config" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:include filename="$(find rob_lab_mapping)/urdf/rob_lab_items_mesurments.xacro" />
+		
+  
+      <link name="world"/>
+
+      <link name="wall_1">
+      <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <!-- size = w, h, l -->
+      <box size="${first_wall_w} ${first_wall_l} ${first_wall_h}" />
+      </geometry>
+      <material name="white"/>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${first_wall_w} ${first_wall_l} ${first_wall_h}" />
+      </geometry>
+      </collision>
+      </link>
+
+         <link name="wall_2">
+      <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${second_wall_w} ${second_wall_l} ${second_wall_h}" />
+      </geometry>
+      <material name="white"/>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${second_wall_w} ${second_wall_l} ${second_wall_h}" />
+      </geometry>
+      </collision>
+      </link>
+
+      <link name="table_1">
+      <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${cmputer_table_1_w} ${cmputer_table_1_l} ${cmputer_table_1_h}" />
+      </geometry>
+      <material name="black"/>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="${cmputer_table_1_w} ${cmputer_table_1_l} ${cmputer_table_1_h}" />
+      </geometry>
+      </collision>
+      </link>
+
+
+    <link name="table_2">
+      <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${cmputer_table_2_w} ${cmputer_table_2_l} ${cmputer_table_2_h}" />
+      </geometry>
+      <material name="white"/>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${cmputer_table_2_w} ${cmputer_table_2_l} ${cmputer_table_2_h}" />
+      </geometry>
+      </collision>
+      </link>
+
+      <link name="comuter_1">
+      <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${cmputer1_w} ${cmputer1_l} ${cmputer1_h}" />
+      </geometry>
+      <material name="white"/>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${cmputer1_w} ${cmputer1_l} ${cmputer1_h}" />
+      </geometry>
+      </collision>
+      </link>
+
+
+      <link name="comuter_2">
+      <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+      <box size="${cmputer2_w} ${cmputer2_l} ${cmputer2_h}" />
+      </geometry>
+      <material name="white"/>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+      <origin rpy="0 0 ${3.14/6}" xyz="0 0 0"/>
+      <geometry>
+      <box size="${cmputer2_w} ${cmputer2_l} ${cmputer2_h}" />
+      </geometry>
+      </collision>
+      </link>
+
+    
+  <!--CAMERA info-->
+    <link name="camera_rail">
+      <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+          <cylinder radius="${camera_rail_r}" length="${camera_rail_l}" />
+        </geometry>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+          <cylinder radius="${camera_rail_r}" length="${camera_rail_l}" />
+        </geometry>
+      </collision>
+      </link> 
+
+        <!-- Camera -->
+  <link name="camera_link">
+    <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+          <box size="${camera_size*2} ${camera_size} ${camera_size}" />
+        </geometry>
+      </visual>
+      <inertial>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia
+      ixx="0.0" ixy="0.0" ixz="0.0"
+      iyy="0.0" iyz="0.0"
+      izz="0.0"/>
+      </inertial>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <geometry>
+          <box size="${camera_size*2} ${camera_size} ${camera_size}" />
+        </geometry>
+      </collision>
+    </link>
+  <gazebo reference="camera_link">
+  <sensor name="camera_link_sensor_name" type="depth">
+    <update_rate>20</update_rate>
+    <camera>
+      <horizontal_fov>1.047198</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.05</near>
+        <far>3</far>
+      </clip>
+    </camera>
+    <plugin name="camera_link_controller" filename="libgazebo_ros_openni_kinect.so">
+      <baseline>0.2</baseline>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>1.0</updateRate>
+      <cameraName>camera_link_ir</cameraName>
+      <imageTopicName>/camera_link/color/image_raw</imageTopicName>
+      <cameraInfoTopicName>/camera_link/color/camera_info</cameraInfoTopicName>
+      <depthImageTopicName>/camera_link/depth/image_raw</depthImageTopicName>
+      <depthImageInfoTopicName>/camera_link/depth/camera_info</depthImageInfoTopicName>
+      <pointCloudTopicName>/camera_link/depth/points</pointCloudTopicName>
+      <frameName>camera_link</frameName>
+      <pointCloudCutoff>0.5</pointCloudCutoff>
+      <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+      <distortionK1>0.00000001</distortionK1>
+      <distortionK2>0.00000001</distortionK2>
+      <distortionK3>0.00000001</distortionK3>
+      <distortionT1>0.00000001</distortionT1>
+      <distortionT2>0.00000001</distortionT2>
+      <CxPrime>0</CxPrime>
+      <Cx>0</Cx>
+      <Cy>0</Cy>
+      <focalLength>0</focalLength>
+      <hackBaseline>0</hackBaseline>
+    </plugin>
+    </sensor>
+    </gazebo>
+       
+      <!-- Joint List Start -->
+      <joint name="world_to_table" type="fixed">
+      <parent link="world"/>
+      <child link="wall_1"/>
+      <origin
+      xyz="-1 0  ${first_wall_h/2}"
+      rpy="0 0 0" />
+      </joint>
+
+      <joint name="wall_connection" type="fixed">
+      <parent link="wall_1"/>
+      <child link="wall_2"/>
+      <origin
+      xyz="${second_wall_l/2 + first_wall_w/2} ${first_wall_l/2 + second_wall_w/2} 0"
+      rpy="0 0 ${3.14/2}" />
+      </joint> >
+
+      <joint name="table_1_wall_2" type="fixed">
+      <parent link="wall_2"/>
+      <child link="table_1"/>
+      <origin
+      xyz=" ${-cmputer_table_1_l/2}  ${-second_wall_l/2 - cmputer_table_1_w/2} ${-second_wall_h/2 + cmputer_table_1_h/2}"
+      rpy="0 0 ${3.14/2}"/>
+      </joint> 
+
+      <joint name="table_2_wall_1" type="fixed">
+      <parent link="wall_1"/>
+      <child link="table_2"/>
+      <origin
+      xyz=" ${cmputer_table_2_l/2 + first_wall_w/2} ${-first_wall_l/2 - cmputer_table_2_w/2 } ${-first_wall_h/2 + cmputer_table_2_h/2}"
+      rpy="0 0  ${3.14/2}"/>
+      </joint> 
+
+      <joint name="comutetr_on_tabl_1" type="fixed">
+      <parent link="table_1"/>
+      <child link="comuter_1"/>
+      <origin
+      xyz=" 0 ${-cmputer_table_1_l/4} ${cmputer_table_1_h/2 + cmputer1_h}"
+      rpy="0 0  ${-3.14/8}"/>
+      </joint> 
+
+
+      <joint name="comuter_2to_2" type="fixed">
+      <parent link="table_2"/>
+      <child link="comuter_2"/>
+      <origin
+      xyz=" ${cmputer_table_2_w/2 - cmputer2_w/2} ${cmputer_table_2_l/5}  ${cmputer_table_2_h/2 + cmputer2_h} "
+      rpy="0 0  0"/>
+      </joint> 
+      
+    <!-- Camera_joints -->
+   <joint name="world_to_rail" type="fixed">
+      <parent link="world"/>
+      <child link="camera_rail"/>
+      <origin
+      xyz="0 0 ${first_wall_h/2}"
+      rpy="0 0 0" />
+      </joint> 
+
+    <joint name="rail_to_camera" type="revolute">
+      <parent link="camera_rail"/>
+      <child link="camera_link"/>
+      <origin
+      xyz="0 0 ${camera_size}"
+      rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+      <limit lower="-6.27" upper="6.27" effort="22.54" velocity="17.4845"/>
+      </joint> 
+
+    
+
+
+    <!-- Colos list  -->
+     <gazebo reference="wall_1">
+        <material>Gazebo/white</material>
+    </gazebo>
+     <gazebo reference="wall_2">
+        <material>Gazebo/white</material>
+    </gazebo>
+
+         <gazebo reference="table_1">
+        <material>Gazebo/Wood</material>
+    </gazebo>
+     <gazebo reference="table_2">
+        <material>Gazebo/Wood</material>
+    </gazebo>
+
+     <gazebo reference="comuter_1">
+        <material>Gazebo/Black</material>
+    </gazebo>
+ <gazebo reference="comuter_2">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+     <gazebo reference="camera_link">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo>
+        <static>true</static>
+    </gazebo>
+
+
+    <!-- Camera joint transmission list -->
+      <transmission name="trans_camera">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="rail_to_camera">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_camera">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </actuator>
+      </transmission> 
+   
+   <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+          <robotNamespace>/lab_config</robotNamespace>
+          <!-- <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType> -->
+        </plugin>
+
+         </gazebo>
+</robot>
+

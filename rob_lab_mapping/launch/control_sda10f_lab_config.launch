@@ -1,0 +1,25 @@
+<launch>
+   <!--  Control Launch -->
+
+        <!-- <rosparam file="$(find rob_lab_mapping)/config/camera_control.yaml" command="load"/>
+        <rosparam file="$(find gp8_simulation)/config/gp8_gazebo_controller.yaml" command="load"/> -->
+        <rosparam file="$(find rob_lab_mapping)/config/sda10f_rob_lab_controllers.yaml" command="load"/>
+
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager"
+		type="spawner" output="screen"
+		args="/sda10f/larm_controller
+                /sda10f/rarm_controller
+                /sda10f/torso_controller
+               /lab_config/camera_position_controller
+               /lab_config/joint_state_controller
+          "/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+		respawn="false" output="screen">
+  </node>
+
+
+</launch>

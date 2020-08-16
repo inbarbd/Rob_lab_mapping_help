@@ -1,0 +1,40 @@
+<launch>
+    <arg name="world_file"     default="$(find gazebo_ros)/worlds/empty_world.world"/>
+    <arg name="gui" default="true"/>
+    <arg name="initial_pose_x" default="0.0"/>
+    <arg name="initial_pose_y" default="0.0"/>
+    <arg name="initial_pose_a" default="0"/>
+    <arg name="robot_name" default="A_DEFAULT_ROBOT_NAME"/>
+    <param name="/use_sim_time" value="true"/>
+
+        <!--  ******************** Gazebo ********************  -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="use_sim_time" value="true"/>
+        <arg name="debug" value="false"/>
+        <arg name="world_name" value="$(arg world_file)"/>
+        <arg name="gui" value="$(arg gui)"/>
+    </include>
+
+
+<!-- Set different initial poses to avoid collision when spawning the model -->
+<group ns="camera">
+    <include file="$(find rob_lab_mapping)/launch/camera_spawn.launch">
+        <arg name="initial_pose_x" value="0.0"/>
+        <arg name="robot_name" value="camera"/>
+
+    </include> 
+     <include file="$(find rob_lab_mapping)/launch/camera_control_launch.launch"/> 
+     <node pkg="tf" type="static_transform_publisher" name="octomap_transform" args="0.20 0 0 0 0 0 world camera_link 50" />
+
+</group>
+
+<group ns="rob_lab_config">
+    <include file="$(find rob_lab_mapping)/launch/rob_lab_spawn.launch">
+        <arg name="initial_pose_x" value="0.0"/>
+        <arg name="robot_name" value="rob_lab_config"/>
+    </include>
+</group>    
+ 
+
+
+</launch>
